@@ -3,6 +3,7 @@ import { CreateClothesDto } from './dto/create-clothes.dto';
 import { UpdateClothesDto } from './dto/update-clothes.dto';
 import { PrismaService } from 'src/plugin/prisma/prisma.service';
 import { Size } from '@prisma/client';
+import { UpdateStockDTO } from './dto/update-stock.dto';
 
 @Injectable()
 export class ClothesService {
@@ -49,21 +50,13 @@ export class ClothesService {
   }
   
   async findOne(id: string) {
-    const clothes = this.prisma.clothes.findUnique({
-      where: {id: id}
-    })
-
-    if (!clothes) throw new NotFoundException(`Clothes with id ${id} not found`)
+    const clothes = await this.checkExist(id)
    
     return clothes
   }
   
   async update(id: string, updateClothesDto: UpdateClothesDto) {
-    const clothes = await this.prisma.clothes.findUnique({
-      where: {id: id}
-    })
-    
-    if (!clothes) throw new NotFoundException(`Clothes with id ${id} not found`)
+    await this.checkExist(id)
 
     const size = Size[updateClothesDto.size.toUpperCase()] as keyof typeof Size
     if (!size) {
@@ -84,16 +77,42 @@ export class ClothesService {
     return updatedClothes
   }
     
-    async remove(id: string) {
-      const clothes = await this.prisma.clothes.findUnique({
-        where: {id: id}
-      })
-      
-      if (!clothes) throw new NotFoundException(`Clothes with id ${id} not found`)
-      
-      await this.prisma.clothes.delete({
-        where: {id: id}
-      })
-    }
+  async remove(id: string) {
+    await this.checkExist(id);
+    
+    await this.prisma.clothes.delete({
+      where: {id: id}
+    })
   }
+
+  private async checkExist(id: string) {
+    const clothes = await this.prisma.clothes.findUnique({
+      where: { id: id }
+    });
+
+    if (!clothes) throw new NotFoundException(`Clothes with id ${id} not found`);
+    return clothes
+  }
+
+  async updateStock(id: string, updateStockDto: UpdateStockDTO, status: string) {
+    const clothes = await this.checkExist(id)
+    const currentStock = clothes.stock
+    if (status === 'REMOVE' && currentStock - updateStockDto.stock < 0) {
+      throw new BadRequestException(`New stock cannot below 0 (zero). Current stock is ${currentStock}`)
+    }
+
+    const updatedStock = status === 'ADD' ? currentStock + updateStockDto.stock : currentStock - updateStockDto.stock
+
+    const updatedClothes = await this.prisma.clothes.update({
+      where: {id: id},
+      data: {
+        stock: updatedStock
+      }
+    }).catch((error) => {
+      throw new InternalServerErrorException('Error while updating clothes')
+    })
+
+    return updatedClothes
+  }
+}
   

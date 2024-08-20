@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus
 import { ClothesService } from './clothes.service';
 import { CreateClothesDto } from './dto/create-clothes.dto';
 import { UpdateClothesDto } from './dto/update-clothes.dto';
+import { UpdateStockDTO } from './dto/update-stock.dto';
 
 @Controller('api/clothes')
 export class ClothesController {
@@ -38,5 +39,17 @@ export class ClothesController {
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string) {
     return this.clothesService.remove(id);
+  }
+
+  @Patch('stock/add/:id')
+  @HttpCode(HttpStatus.OK)
+  addStock(@Param('id') id: string, @Body() updateStockDto: UpdateStockDTO) {
+    return this.clothesService.updateStock(id, updateStockDto, 'ADD')
+  }
+
+  @Patch('stock/remove/:id')
+  @HttpCode(HttpStatus.OK)
+  removeStock(@Param('id') id: string, @Body() updateStockDto: UpdateStockDTO) {
+    return this.clothesService.updateStock(id, updateStockDto, 'REMOVE')
   }
 }
