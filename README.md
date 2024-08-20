@@ -89,28 +89,16 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Resources
+## Documentation
 
-Check out a few resources that may come in handy when working with NestJS:
+For a brief documentation, you can access through `{{base_url}}/api-docs`
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Deployed link
 
-## Support
+For public assess, you can access through https://sagara-msib-test-qmpzoue2ma-et.a.run.app
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Postman Collection
 
-## Stay in touch
+For easily testing, refer to this postman collection
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/23438759-8e930347-c94d-4ca3-ae79-b68f63d77f10?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D23438759-8e930347-c94d-4ca3-ae79-b68f63d77f10%26entityType%3Dcollection%26workspaceId%3D6604610b-3447-4bab-a94d-a828e236aa33#?env%5BProduction%5D=W3sia2V5IjoiYmFzZV91cmwiLCJ2YWx1ZSI6Imh0dHBzOi8vc2FnYXJhLW1zaWItdGVzdC1xbXB6b3VlMm1hLWV0LmEucnVuLmFwcCIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cHM6Ly9zYWdhcmEtbXNpYi10ZXN0LXFtcHpvdWUybWEtZXQuYS5ydW4uYXBwIiwic2Vzc2lvbkluZGV4IjowfV0=)
