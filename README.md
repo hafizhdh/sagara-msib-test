@@ -91,7 +91,14 @@ $ npm run test:cov
 
 ## Documentation
 
-For a brief documentation, you can access through `{{base_url}}/api-docs`
+For a brief documentation, you can access through 
+```
+http://localhost:3300/api-docs
+```
+or
+```
+https://sagara-msib-test-qmpzoue2ma-et.a.run.app/api-docs
+```
 
 ## Deployed link
 
