@@ -15,8 +15,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return entrypoint', () => {
+      expect(appController.getHello()).toBe('Sagara MSIB Batch 7 Study Case');
     });
   });
 });

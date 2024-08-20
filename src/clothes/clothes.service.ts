@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { CreateClothesDto } from './dto/create-clothes.dto';
 import { UpdateClothesDto } from './dto/update-clothes.dto';
-import { PrismaService } from 'src/plugin/prisma/prisma.service';
+import { PrismaService } from '../plugin/prisma/prisma.service';
 import { Size } from '@prisma/client';
 import { UpdateStockDTO } from './dto/update-stock.dto';
 
