@@ -33,7 +33,7 @@ export class ClothesService {
     const where: any = {}
 
     if (color) {
-      where.color = color
+      where.color = color.toLowerCase()
     }
 
     if (size) {
@@ -113,6 +113,26 @@ export class ClothesService {
     })
 
     return updatedClothes
+  }
+
+  async findRunOutStock() {
+    return await this.prisma.clothes.findMany({
+      where: {
+        stock: {
+          equals: 0
+        }
+      }
+    })
+  }
+
+  async findLimitedStock() {
+    return await this.prisma.clothes.findMany({
+      where: {
+        stock: {
+          lt: 5
+        }
+      }
+    })
   }
 }
   

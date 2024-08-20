@@ -52,4 +52,16 @@ export class ClothesController {
   removeStock(@Param('id') id: string, @Body() updateStockDto: UpdateStockDTO) {
     return this.clothesService.updateStock(id, updateStockDto, 'REMOVE')
   }
+
+  @Get('stock/run-out')
+  @HttpCode(HttpStatus.OK)
+  findRunOutStock() {
+    return this.clothesService.findRunOutStock()
+  }
+
+  @Get('stock/limited')
+  @HttpCode(HttpStatus.OK)
+  findLimitedStock() {
+    return this.clothesService.findLimitedStock()
+  }
 }
